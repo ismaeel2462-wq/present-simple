@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Quest - Present Simple</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Cairo", Arial, sans-serif;
+    min-height: 100vh;
+    color: white;
+    background:
+        radial-gradient(circle at top left, rgba(99,102,241,.35), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(236,72,153,.25), transparent 35%),
+        linear-gradient(135deg, #080b1d, #11152e 50%, #090b19);
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+}
+
+.container {
+    width: min(1000px, 94%);
+    margin: auto;
+}
+
+/* ================= HEADER ================= */
+
+header {
+    padding: 20px 0;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.logo span {
+    color: #8b5cf6;
+}
+
+.stats {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.1);
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-weight: 700;
+    backdrop-filter: blur(10px);
+}
+
+.xp {
+    color: #facc15;
+}
+
+.lives {
+    color: #fb7185;
+}
+
+/* ================= SCREENS ================= */
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* ================= HOME ================= */
+
+.hero {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-box {
+    width: 100%;
+    padding: 50px 25px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 30px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 80px rgba(0,0,0,.3);
+}
+
+.emoji {
+    font-size: 75px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+.hero h1 {
+    font-size: clamp(35px, 7vw, 70px);
+    margin: 15px 0;
+    background: linear-gradient(90deg,#a78bfa,#38bdf8,#f472b6);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    color: #cbd5e1;
+    font-size: 18px;
+    line-height: 1.9;
+    max-width: 700px;
+    margin: auto;
+}
+
+.main-btn {
+    border: none;
+    background: linear-gradient(135deg,#7c3aed,#4f46e5);
+    color: white;
+    padding: 15px 35px;
+    margin-top: 30px;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(124,58,237,.3);
+    transition: .25s;
+}
+
+.main-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* ================= LESSON ================= */
+
+.lesson-card {
+    margin-top: 25px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 25px;
+    padding: 30px;
+    backdrop-filter: blur(15px);
+}
+
+.lesson-title {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #c4b5fd;
+}
+
+.rule {
+    background: rgba(99,102,241,.12);
+    border-right: 5px solid #8b5cf6;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 15px 0;
+    line-height: 2;
+}
+
+.example {
+    background: rgba(0,0,0,.25);
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.english {
+    direction: ltr;
+    text-align: left;
+    color: #67e8f9;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.arabic {
+    color: #cbd5e1;
+}
+
+.highlight {
+    color: #facc15;
+    font-weight: 900;
+}
+
+.formula {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.formula div {
+    background: rgba(255,255,255,.07);
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.formula strong {
+    display: block;
+    color: #a78bfa;
+    margin-bottom: 5px;
+}
+
+/* ================= QUIZ ================= */
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px 0 10px;
+}
+
+.progress {
+    height: 10px;
+    background: rgba(255,255,255,.1);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg,#8b5cf6,#06b6d4);
+    transition: .4s;
+}
+
+.question-card {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 25px;
+    padding: 30px;
+    text-align: center;
+}
+
+.question-number {
+    color: #94a3b8;
+}
+
+.question {
+    direction: ltr;
+    font-size: clamp(25px,5vw,42px);
+    margin: 25px 0;
+    font-weight: 900;
+}
+
+.answers {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+}
+
+.answer {
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(255,255,255,.06);
+    color: white;
+    padding: 18px;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.answer:hover {
+    background: rgba(124,58,237,.3);
+    transform: translateY(-2px);
+}
+
+.answer.correct {
+    background: rgba(34,197,94,.25);
+    border-color: #22c55e;
+}
+
+.answer.wrong {
+    background: rgba(239,68,68,.25);
+    border-color: #ef4444;
+}
+
+.feedback {
+    min-height: 50px;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.next-btn {
+    display: none;
+    border: none;
+    background: #06b6d4;
+    color: white;
+    padding: 13px 30px;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: 800;
+    cursor: pointer;
+    margin: auto;
+}
+
+/* ================= RESULT ================= */
+
+.result {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.result-icon {
+    font-size: 90px;
+}
+
+.result h2 {
+    font-size: 40px;
+    margin: 15px 0;
+}
+
+.score-box {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+
+.score {
+    min-width: 130px;
+    padding: 20px;
+    background: rgba(255,255,255,.07);
+    border-radius: 18px;
+}
+
+.score strong {
+    display: block;
+    font-size: 30px;
+    color: #facc15;
+}
+
+/* ================= LEVEL ================= */
+
+.level {
+    color: #67e8f9;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+/* ================= TOAST ================= */
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 25px;
+    transform: translate(-50%,120px);
+    background: #161b35;
+    border: 1px solid rgba(255,255,255,.1);
+    padding: 14px 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0,0,0,.4);
+    transition: .4s;
+    z-index: 9999;
+}
+
+.toast.show {
+    transform: translate(-50%,0);
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:700px) {
+
+    .answers {
+        grid-template-columns: 1fr;
+    }
+
+    .formula {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-box {
+        padding: 35px 18px;
+    }
+
+    .lesson-card,
+    .question-card {
+        padding: 20px;
+    }
+
+    .question {
+        font-size: 28px;
+    }
+
+    .stats {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .top-bar {
+        justify-content: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <div class="top-bar">
+        <div class="logo">🎮 English <span>Quest</span></div>
+
+        <div class="stats">
+            <div class="stat xp">⭐ XP: <span id="xp">0</span></div>
+            <div class="stat lives">❤️ <span id="lives">3</span></div>
+            <div class="stat">🔥 <span id="streak">0</span></div>
+        </div>
+    </div>
+</header>
+
+
+<!-- ================= HOME ================= -->
+
+<section id="home" class="screen active">
+
+    <div class="hero">
+
+        <div class="hero-box">
+
+            <div class="emoji">🧙‍♂️</div>
+
+            <h1>Present Simple</h1>
+
+            <p>
+                تعلّم زمن الحاضر البسيط بطريقة ممتعة،
+                اجمع النقاط، حافظ على سلسلة الإجابات الصحيحة
+                وأصبح بطل اللغة الإنجليزية! 🚀
+            </p>
+
+            <button class="main-btn" onclick="startLesson()">
+                🚀 ابدأ المغامرة
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LESSON ================= -->
+
+<section id="lesson" class="screen">
+
+    <div class="lesson-card">
+
+        <div class="lesson-title">
+            📚 قبل أن نبدأ... تعلّم القاعدة
+        </div>
+
+        <div class="rule">
+
+            <strong>ما هو Present Simple؟</strong>
+
+            <p>
+                نستخدم الحاضر البسيط للتحدث عن الأشياء التي تحدث
+                بشكل متكرر، العادات، الحقائق، والأشياء التي تحدث عادةً.
+            </p>
+
+        </div>
+
+
+        <div class="example">
+
+            <div class="english">
+                I play football every day.
+            </div>
+
+            <div class="arabic">
+                أنا ألعب كرة القدم كل يوم.
+            </div>
+
+        </div>
+
+
+        <div class="example">
+
+            <div class="english">
+                She <span class="highlight">plays</span> football every day.
+            </div>
+
+            <div class="arabic">
+                هي تلعب كرة القدم كل يوم.
+            </div>
+
+        </div>
+
+
+        <div class="rule">
+
+            ⭐ <strong>قاعدة مهمة!</strong>
+
+            <p>
+                مع:
+                <span class="highlight">He / She / It</span>
+                نضيف غالبًا
+                <span class="highlight">s</span>
+                إلى الفعل.
+            </p>
+
+        </div>
+
+
+        <div class="formula">
+
+            <div>
+                <strong>I / You / We / They</strong>
+                play
+            </div>
+
+            <div>
+                <strong>He / She / It</strong>
+                plays
+            </div>
+
+            <div>
+                <strong>النفي</strong>
+                do not / does not
+            </div>
+
+        </div>
+
+
+        <div class="rule">
+
+            💡 <strong>أمثلة سريعة</strong>
+
+            <div class="example">
+                <div class="english">I like coffee.</div>
+                <div class="arabic">أنا أحب القهوة.</div>
+            </div>
+
+            <div class="example">
+                <div class="english">He likes coffee.</div>
+                <div class="arabic">هو يحب القهوة.</div>
+            </div>
+
+            <div class="example">
+                <div class="english">They don't play tennis.</div>
+                <div class="arabic">هم لا يلعبون التنس.</div>
+            </div>
+
+            <div class="example">
+                <div class="english">Does she work here?</div>
+                <div class="arabic">هل هي تعمل هنا؟</div>
+            </div>
+
+        </div>
+
+
+        <button class="main-btn" onclick="startQuiz()">
+            🎯 فهمت! ابدأ الاختبار
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= QUIZ ================= -->
+
+<section id="quiz" class="screen">
+
+    <div class="quiz-header">
+
+        <div>
+            السؤال
+            <strong>
+                <span id="currentQuestion">1</span>
+                /
+                <span id="totalQuestions">10</span>
+            </strong>
+        </div>
+
+        <div class="level">
+            المستوى <span id="level">1</span>
+        </div>
+
+    </div>
+
+
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+
+    <div class="question-card">
+
+        <div class="question-number">
+            اختر الإجابة الصحيحة 👇
+        </div>
+
+        <div id="question" class="question">
+            I ___ football every day.
+        </div>
+
+        <div id="answers" class="answers"></div>
+
+        <div id="feedback" class="feedback"></div>
+
+        <button id="nextBtn" class="next-btn" onclick="nextQuestion()">
+            السؤال التالي ➜
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= RESULT ================= -->
+
+<section id="result" class="screen">
+
+    <div class="lesson-card result">
+
+        <div class="result-icon" id="resultIcon">
+            🏆
+        </div>
+
+        <h2 id="resultTitle">
+            أحسنت!
+        </h2>
+
+        <p id="resultText">
+            لقد أنهيت الاختبار.
+        </p>
+
+        <div class="score-box">
+
+            <div class="score">
+                <strong id="finalScore">0</strong>
+                النقاط
+            </div>
+
+            <div class="score">
+                <strong id="correctAnswers">0</strong>
+                إجابات صحيحة
+            </div>
+
+            <div class="score">
+                <strong id="finalXP">0</strong>
+                XP
+            </div>
+
+        </div>
+
+        <div class="level">
+            رتبتك:
+            <span id="finalLevel">مبتدئ</span>
+        </div>
+
+        <button class="main-btn" onclick="restartGame()">
+            🔄 العب مرة أخرى
+        </button>
+
+    </div>
+
+</section>
+
+</div>
+
+
+<div id="toast" class="toast">
+    🎉 إجابة صحيحة!
+</div>
+
+
+<script>
+
+/* =====================================================
+   PRESENT SIMPLE - ENGLISH QUEST
+===================================================== */
+
+const questions = [
+
+    {
+        q: "I ___ football every day.",
+        answers: ["play", "plays", "playing", "played"],
+        correct: 0,
+        explanation: "مع I نستخدم الفعل الأساسي: play."
+    },
+
+    {
+        q: "She ___ coffee every morning.",
+        answers: ["drink", "drinks", "drinking", "drank"],
+        correct: 1,
+        explanation: "مع She نضيف s: drinks."
+    },
+
+    {
+        q: "They ___ English at school.",
+        answers: ["study", "studies", "studying", "studied"],
+        correct: 0,
+        explanation: "مع They نستخدم study بدون s."
+    },
+
+    {
+        q: "He ___ to work every day.",
+        answers: ["go", "goes", "going", "gone"],
+        correct: 1,
+        explanation: "مع He تصبح go → goes."
+    },
+
+    {
+        q: "We ___ football on Friday.",
+        answers: ["plays", "play", "playing", "played"],
+        correct: 1,
+        explanation: "مع We نستخدم play."
+    },
+
+    {
+        q: "My brother ___ TV every night.",
+        answers: ["watch", "watching", "watches", "watched"],
+        correct: 2,
+        explanation: "My brother = He، لذلك watch تصبح watches."
+    },
+
+    {
+        q: "I ___ like spicy food.",
+        answers: ["doesn't", "don't", "not", "am not"],
+        correct: 1,
+        explanation: "مع I نستخدم don't."
+    },
+
+    {
+        q: "She ___ like football.",
+        answers: ["don't", "doesn't", "isn't", "not"],
+        correct: 1,
+        explanation: "مع She نستخدم doesn't."
+    },
+
+    {
+        q: "___ you speak English?",
+        answers: ["Does", "Do", "Are", "Is"],
+        correct: 1,
+        explanation: "مع You نستخدم Do."
+    },
+
+    {
+        q: "___ he work here?",
+        answers: ["Do", "Does", "Is", "Are"],
+        correct: 1,
+        explanation: "مع He نستخدم Does."
+    }
+
+];
+
+
+let current = 0;
+let score = 0;
+let xp = 0;
+let lives = 3;
+let streak = 0;
+let answered = false;
+
+
+/* ================= SCREEN ================= */
+
+function showScreen(id) {
+
+    document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.remove("active");
+    });
+
+    document.getElementById(id).classList.add("active");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* ================= START ================= */
+
+function startLesson() {
+
+    current = 0;
+    score = 0;
+    xp = 0;
+    lives = 3;
+    streak = 0;
+
+    updateStats();
+
+    showScreen("lesson");
+}
+
+
+/* ================= QUIZ ================= */
+
+function startQuiz() {
+
+    current = 0;
+    score = 0;
+    xp = 0;
+    lives = 3;
+    streak = 0;
+
+    updateStats();
+
+    showScreen("quiz");
+
+    loadQuestion();
+}
+
+
+/* ================= LOAD QUESTION ================= */
+
+function loadQuestion() {
+
+    answered = false;
+
+    const data = questions[current];
+
+    document.getElementById("currentQuestion").textContent = current + 1;
+
+    document.getElementById("totalQuestions").textContent = questions.length;
+
+    document.getElementById("level").textContent =
+        Math.floor(current / 3) + 1;
+
+    document.getElementById("question").textContent = data.q;
+
+    document.getElementById("feedback").textContent = "";
+
+    document.getElementById("nextBtn").style.display = "none";
+
+    const progress =
+        ((current) / questions.length) * 100;
+
+    document.getElementById("progressBar").style.width =
+        progress + "%";
+
+
+    const answersBox =
+        document.getElementById("answers");
+
+    answersBox.innerHTML = "";
+
+
+    data.answers.forEach((answer, index) => {
+
+        const button = document.createElement("button");
+
+        button.className = "answer";
+
+        button.textContent = answer;
+
+        button.onclick = () => checkAnswer(index, button);
+
+        answersBox.appendChild(button);
+
+    });
+
+}
+
+
+/* ================= CHECK ================= */
+
+function checkAnswer(index, button) {
+
+    if (answered) return;
+
+    answered = true;
+
+    const data = questions[current];
+
+    const allButtons =
+        document.querySelectorAll(".answer");
+
+
+    if (index === data.correct) {
+
+        button.classList.add("correct");
+
+        score += 10;
+
+        xp += 20;
+
+        streak++;
+
+        if (streak >= 3) {
+
+            xp += 10;
+
+            showToast("🔥 سلسلة رائعة! +10 XP");
+
+        } else {
+
+            showToast("🎉 إجابة صحيحة! +20 XP");
+
+        }
+
+        document.getElementById("feedback").innerHTML =
+            "✅ ممتاز! " + data.explanation;
+
+    } else {
+
+        button.classList.add("wrong");
+
+        allButtons[data.correct].classList.add("correct");
+
+        lives--;
+
+        streak = 0;
+
+        document.getElementById("feedback").innerHTML =
+            "❌ ليس تمامًا. " + data.explanation;
+
+        if (lives <= 0) {
+
+            document.getElementById("feedback").innerHTML +=
+                "<br>💔 انتهت الأرواح، لكن يمكنك المحاولة مرة أخرى!";
+
+        }
+
+    }
+
+
+    allButtons.forEach(btn => {
+        btn.style.pointerEvents = "none";
+    });
+
+
+    updateStats();
+
+    document.getElementById("nextBtn").style.display = "block";
+}
+
+
+/* ================= NEXT ================= */
+
+function nextQuestion() {
+
+    current++;
+
+    if (current >= questions.length || lives <= 0) {
+
+        finishGame();
+
+        return;
+
+    }
+
+    loadQuestion();
+}
+
+
+/* ================= FINISH ================= */
+
+function finishGame() {
+
+    document.getElementById("progressBar").style.width = "100%";
+
+    showScreen("result");
+
+    document.getElementById("finalScore").textContent = score;
+
+    const correct =
+        Math.round(score / 10);
+
+    document.getElementById("correctAnswers").textContent =
+        correct + "/" + questions.length;
+
+    document.getElementById("finalXP").textContent =
+        xp;
+
+
+    let rank;
+    let icon;
+    let title;
+
+
+    if (score >= 90) {
+
+        rank = "🏆 خبير الإنجليزية";
+
+        icon = "👑";
+
+        title = "أسطوري!";
+
+    } else if (score >= 70) {
+
+        rank = "🥇 متقدم";
+
+        icon = "🏆";
+
+        title = "أحسنت جدًا!";
+
+    } else if (score >= 50) {
+
+        rank = "🥈 متعلم جيد";
+
+        icon = "😎";
+
+        title = "عمل رائع!";
+
+    } else {
+
+        rank = "🌱 مبتدئ";
+
+        icon = "💪";
+
+        title = "لا تستسلم!";
+
+    }
+
+
+    document.getElementById("finalLevel").textContent =
+        rank;
+
+    document.getElementById("resultIcon").textContent =
+        icon;
+
+    document.getElementById("resultTitle").textContent =
+        title;
+
+
+    document.getElementById("resultText").textContent =
+        "لقد أنهيت تحدي Present Simple وحصلت على " +
+        xp +
+        " نقطة XP.";
+}
+
+
+/* ================= RESTART ================= */
+
+function restartGame() {
+
+    startQuiz();
+
+}
+
+
+/* ================= STATS ================= */
+
+function updateStats() {
+
+    document.getElementById("xp").textContent = xp;
+
+    document.getElementById("lives").textContent = lives;
+
+    document.getElementById("streak").textContent = streak;
+    }
+
+
+/* ================= TOAST ================= */
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 1800);
+
+}
+
+</script>
+
+</body>
+</html>
